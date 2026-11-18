@@ -7,8 +7,16 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+import cors from "cors";
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://inventory-management-app-liard-five.vercel.app"
+  ]
+}));
+
+app.use(express.json());
 app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
